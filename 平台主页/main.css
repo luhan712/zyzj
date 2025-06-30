@@ -370,10 +370,57 @@ body {
 #detect .btn-primary:hover {
     transform: translateY(-2px);
 }
+/* 二维码检测模块样式优化 */
+#detect .card-hover {
+    transition: all 0.3s ease;
+}
+
+#detect .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+#detect .card-hover i {
+    transition: all 0.3s ease;
+}
+
+#detect .card-hover:hover i {
+    transform: scale(1.1);
+}
+/* 确保按钮容器居中 */
+#qr-result-popup .flex.justify-center {
+    justify-content: center;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    #detect .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #detect .card-hover {
+        padding: 1.5rem;
+    }
+    
+    #qr-result-popup {
+        width: 90%;
+        padding: 1.5rem;
+    }
+}
+
+/* 摄像头预览样式 */
+#qr-reader video {
+    width: 100%;
+    height: 200px;
+    object-cover;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
 
 #qr-reader {
     margin-top: 1rem;
 }
+
 
 /* 样本展示样式 */
 #samples {
