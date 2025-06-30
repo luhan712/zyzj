@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中药材智能检测平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body class="antialiased">
+<!-- 导航栏 -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="#" class="flex items-center">
+    <img src="../images/logo.png" alt="中药智检 logo" class="h-8 md:h-10 mr-2"> 
+    <span class="text-xl md:text-2xl font-bold text-primary">中药智检</span>
+    </a>
+        <div class="hidden md:flex space-x-6 items-center">
+            <a href="#home" class="text-gray-600 hover:text-primary-green">首页</a>
+            <a href="#features" class="text-gray-600 hover:text-primary-green">功能特点</a>
+            <a href="#process" class="text-gray-600 hover:text-primary-green">检测流程</a>
+            <a href="#samples" class="text-gray-600 hover:text-primary-green">样本展示</a>
+            <a href="#about" class="text-gray-600 hover:text-primary-green">关于我们</a>
+            <a href="../更多药材信息/更多中药材.html" class="text-gray-600 hover:text-primary-green">中药图片库</a>
+        </div>
+            <a href="#detect" class="btn-primary-nav btn-primary">立即检测</a>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+            </button>
+        <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </div>
+    <!-- 移动端菜单 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+            <a href="#home" class="text-gray-600 hover:text-primary-green">首页</a>
+            <a href="#features" class="text-gray-600 hover:text-primary-green">功能特点</a>
+            <a href="#process" class="text-gray-600 hover:text-primary-green">检测流程</a>
+            <a href="#samples" class="text-gray-600 hover:text-primary-green">样本展示</a>
+            <a href="#about" class="text-gray-600 hover:text-primary-green">关于我们</a>
+            <a href="#" class="text-gray-600 hover:text-primary-green">中药图片库</a>
+            <a href="#detect" class="btn-primary">立即检测</a>
+        </div>
+    </div>
+</nav>
+
+        <!-- 英雄区域 -->
+    <section id="home" class="relative" style="background-image: url('../images/英雄区域背景图.jpg'); background-size: cover; background-position: center;">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="animate-fade-in">智能识别中药材<br>守护健康每一步</h1>
+            <p class="animate-fade-in delay-400">利用先进的计算机视觉和AI技术，我们的平台能够快速、准确地识别中药材的种类、品质和真伪，为您的健康保驾护航。</p>
+            <div class="mt-8 space-x-4 animate-fade-in delay-600">
+                <a href="#detect" class="btn-primary">开始检测</a>
+                <a href="#process" class="btn-primary">了解流程</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作伙伴 -->
+    <section id="section" class="py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-12">值得信赖的合作伙伴</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div><i class="fas fa-university"></i><p>中医药大学</p></div>
+                <div><i class="fas fa-flask"></i><p>药材研究所</p></div>
+                <div><i class="fas fa-industry"></i><p>制药企业</p></div>
+                <div><i class="fas fa-store"></i><p>药材市场</p></div>
+                <div><i class="fas fa-check-circle"></i><p>质检机构</p></div>
+            </div>
+        </div>
+    </section>
+
+<!-- 核心优势板块 -->
+<section id="features" class="py-16">
+    <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-white mb-6 mt-4">智能识别中药材</h2>
+        <p class="mb-12">我们的平台结合了先进的AI技术与传统中医药知识，为您提供全方位的中药材检测解决方案</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- 高精度图像识别（调用bg-image-1类） -->
+            <div class="card-hover bg-image-1">
+                <i class="fas fa-image text-4xl mb-4"></i>
+                <h3 class="font-bold">高精度图像识别</h3>
+                <p class="font-bold">基于深度学习的图像识别技术，能够精确分析药材外观特征，辨别真伪优劣。</p>
+                <ul class="mt-4 text-left space-y-2">
+                    <li class="font-bold"><i class="fas fa-check text-primary-green"></i> 超高识别准确率</li>
+                    <li class="font-bold"><i class="fas fa-check text-primary-green"></i> 支持1000+常见中药材</li>
+                    <li class="font-bold"><i class="fas fa-check text-primary-green"></i> 支持多角度图像分析</li>
+                </ul>
+            </div>
+            
+            <!-- 文字检测解析（调用bg-text-1类） -->
+            <div class="card-hover bg-text-1">
+                <i class="fas fa-text-height text-4xl mb-4"></i>
+                <h3 class="font-bold">文字检测解析</h3>
+                <p class="font-bold">输入描述性文本即可获取药材识别结果，结构化展示功效与用途。</p>
+                <ul class="mt-4 text-left space-y-2">
+                    <li class="font-bold"><i class="fas fa-check text-primary-green"></i> 中英文名称识别</li>
+                    <li class="font-bold"><i class="fas fa-check text-primary-green"></i> AI引导用户输入</li>
+                    <li class="font-bold"><i class="fas fa-check text-primary-green"></i> 功效推理结构化展示</li>
+                </ul>
+            </div>
+            
+            <!-- 视频帧识别（调用bg-video-1类） -->
+            <div class="card-hover bg-video-1">
+                <i class="fas fa-video text-4xl mb-4"></i>
+                <h3 class="font-bold">视频帧识别</h3>
+                <p class="font-bold">自动分析视频关键帧并识别药材种类，适用于基地监测与批量筛查。</p>
+                <ul class="mt-4 text-left space-y-2">
+                    <li class="font-bold"><i class="fas fa-check text-primary-green"></i> 关键帧提取与识别</li>
+                    <li class="font-bold"><i class="fas fa-check text-primary-green"></i> 检测视频中多种药材</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 检测流程 -->
+<section id="process" class="py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">
+                简单三步，<span class="text-primary">完成检测</span>
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                无需专业知识，轻松获取准确的中药材检测结果，为您的健康保驾护航。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- 步骤1 -->
+            <div class="relative">
+                <div class="bg-light rounded-xl p-6 h-full relative z-10 card-hover shadow-md transition duration-300 ease-in-out transform hover:scale-105" style="background-image: url('../images/流程背景图1.jpg'); background-size: cover; background-position: center;">
+                    <div class="step-number" style="background-color: #514036;">1</div>
+                    <h3 class="text-xl font-bold text-[#514036] mb-3">上传样本</h3>
+                    <p class="text-gray-600 mb-4">
+                        <b>只需通过拍照或上传图片的方式提交您的中药材样本，记得确保图像清晰、完整，这样才能让我们的系统更精准地识别哦。</b>
+                    </p>
+                </div>
+                <div class="hidden md:block absolute top-1/4 -right-4 transform translate-x-1/2">
+                    <i class="fa fa-long-arrow-right text-4xl text-primary"></i>
+                </div>
+            </div>
+
+            <!-- 步骤2 -->
+            <div class="relative">
+                <div class="bg-light rounded-xl p-6 h-full relative z-10 card-hover shadow-md transition duration-300 ease-in-out transform hover:scale-105" style="background-image: url('../images/流程背景图2.jpg'); background-size: cover; background-position: center;">
+                    <div class="step-number" style="background-color: #514036;">2</div>
+                    <h3 class="text-xl font-bold text-[#514036] mb-3">智能检测</h3>
+                    <p class="text-gray-600 mb-4">
+                        <b>我们强大的AI系统会迅速对样本进行多角度细致分析，然后结合庞大的数据库进行精准比对识别，不放过任何一个细微特征。</b>
+                    </p>
+                </div>
+                <div class="hidden md:block absolute top-1/4 -right-4 transform translate-x-1/2">
+                    <i class="fa fa-long-arrow-right text-4xl text-primary"></i>
+                </div>
+            </div>
+
+            <!-- 步骤3 -->
+            <div class="relative">
+                <div class="bg-light rounded-xl p-6 h-full relative z-10 card-hover shadow-md transition duration-300 ease-in-out transform hover:scale-105" style="background-image: url('../images/流程背景图3.jpg'); background-size: cover; background-position: center;">
+                    <div class="step-number" style="background-color: #514036;">3</div>
+                    <h3 class="text-xl font-bold text-[#514036] mb-3">获取信息</h3>
+                    <p class="text-gray-600 mb-4">
+                        <b>系统会快速生成一份详细的检测信息，其中包括药材名称、品质等级、成分分析等丰富信息，让您一目了然。</b>
+                    </p>             
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <section id="detect" class="animate-fade-in">
+        <div class="container mx-auto px-6 text-center" style="background-image: url('../images/检测区域背景图.png'); background-size: cover; background-position: center;">
+            <h2 class="text-3xl font-bold text-white mb-4"><strong>智能识别中药材</strong></h2>
+            <p class="text-lg text-custom-color font-bold mb-8">支持对中药材品类的自动识别、真伪甄别与品质评级</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <!-- 图像检测 -->
+                <div class="card-hover text-center bg-white p-8 rounded-xl shadow-lg transition-transform hover:-translate-y-2 hover:shadow-xl">
+                    <i class="fas fa-image fa-2x mb-4 text-green-600"></i>
+                    <h3 class="text-xl font-bold text-title-color text-gray-800 mb-2">图像检测</h3>
+                    <p class="text-gray-600 mb-4">跳转至智能体进行中药材图像识别</p>
+                    <button class="btn-primary bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md" onclick="window.location.href='https://agent.xfyun.cn/chat?botId=2928641'">开始检测</button>
+                </div>
+                <!-- 文字检测 -->
+                <div class="card-hover text-center bg-white p-8 rounded-xl shadow-lg transition-transform hover:-translate-y-2 hover:shadow-xl">
+                    <i class="fas fa-file-alt fa-2x mb-4 text-green-600"></i>
+                    <h3 class="text-xl font-bold text-title-color text-gray-800 mb-2">文字检测</h3>
+                    <p class="text-gray-600 mb-4">跳转至智能体进行中药材文字描述识别</p>
+                    <button class="btn-primary bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md" onclick="window.location.href='https://agent.xfyun.cn/chat?botId=2916853'">开始检测</button>
+                </div>
+                <!-- 视频检测 -->
+                <div class="card-hover text-center bg-white p-8 rounded-xl shadow-lg transition-transform hover:-translate-y-2 hover:shadow-xl">
+                    <i class="fas fa-video fa-2x mb-4 text-green-600"></i>
+                    <h3 class="text-xl font-bold text-title-color text-gray-800 mb-2">视频检测</h3>
+                    <p class="text-gray-600 mb-4">跳转至智能体进行中药材视频识别</p>
+                    <button class="btn-primary bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md" onclick="window.location.href='https://www.coze.cn/store/agent/7519029592481906739?bot_id=true&bid=6goas5uc8201m'">开始检测</button>
+                </div>
+            </div>
+
+            <!-- 二维码检测 - 修改为占据整行并居中 -->
+            <div class="card-hover text-center bg-white p-8 rounded-xl shadow-lg transition-transform hover:-translate-y-2 hover:shadow-xl mt-8 lg:col-span-3 mx-auto max-w-2xl">
+                <i class="fas fa-qrcode fa-2x mb-4 text-green-600"></i>
+                <h3 class="text-xl font-bold text-title-color text-gray-800 mb-2">二维码检测</h3>
+                <p class="text-gray-600 mb-4">扫描中药材包装二维码，获取溯源信息</p>
+                <input type="file" accept="image/*" id="qr-upload" class="hidden">
+                <div class="flex justify-center gap-4">
+                    <button class="btn-primary bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md" onclick="document.getElementById('qr-upload').click()">上传二维码图片</button>
+                    <button class="btn-primary bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md" id="start-camera-btn">打开摄像头扫码</button>
+                </div>
+                <div class="flex justify-center mt-4">
+                    <button class="btn-primary bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md" id="start-detection-btn">开始检测</button>
+                </div>
+                <div id="qr-reader" style="width: 100%; max-width: 300px; margin: 0 auto; display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+<!-- 浮窗 -->
+<div id="qr-result-popup" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-xl shadow-lg z-50 hidden">
+    <div id="qr-result-content"></div>
+    <button id="close-popup-btn" class="btn-primary bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md mt-4">关闭</button>
+</div>
+
+<!-- 遮罩层 -->
+<div id="overlay" class="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-40 hidden"></div>
+
+<!-- Include html5-qrcode library -->
+<script src="https://unpkg.com/html5-qrcode@2.3.8/minified/html5-qrcode.min.js"></script>
+</section>
+
+    <!-- 中药样本 -->
+    <section id="samples" class="py-16 bg-light">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">
+                    常见<span class="text-primary">中药材样本</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    查看我们系统支持检测的部分中药材样本及检测示例
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 样本1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative h-64">
+                        <img src="../images/人参.jpg" alt="人参样本" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-2">人参</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            人参为五加科植物人参的干燥根，具有大补元气、复脉固脱等功效。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <div class="text-sm text-gray-500 mr-4">
+                                </div>
+                            </div>
+                            <a href="../更多药材信息/人参.html" class="text-primary hover:text-dark text-sm font-medium">
+                                查看详情 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 样本2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative h-64">
+                        <img src="../images/黄芪.jpg" alt="黄芪样本" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-2">黄芪</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            黄芪为豆科植物蒙古黄芪或膜荚黄芪的干燥根，具有补气升阳、固表止汗等功效。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <div class="text-sm text-gray-500 mr-4">
+                                </div>
+                            </div>
+                            <a href="../更多药材信息/黄芪.html" class="text-primary hover:text-dark text-sm font-medium">
+                                查看详情 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 样本3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative h-64">
+                        <img src="../images/枸杞.jpg" alt="枸杞样本" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-2">枸杞</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            枸杞为茄科植物宁夏枸杞的干燥成熟果实，具有滋补肝肾、益精明目的功效。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <div class="text-sm text-gray-500 mr-4">
+                            </div>
+                        </div>
+                            <a href="../更多药材信息/枸杞.html" class="text-primary hover:text-dark text-sm font-medium">
+                                查看详情 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 样本4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative h-64">
+                        <img src="../images/当归.jpg" alt="当归样本" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-2">当归</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            当归为伞形科植物当归的干燥根，具有补血活血、调经止痛、润肠通便的功效。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <div class="text-sm text-gray-500 mr-4">
+                                </div>
+                            </div>
+                            <a href="../更多药材信息/当归.html" class="text-primary hover:text-dark text-sm font-medium">
+                                查看详情 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 样本5 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative h-64">
+                        <img src="../images/天麻.jpg" alt="天麻样本" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-2">天麻</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            天麻为兰科植物天麻的干燥块茎，具有息风止痉、平抑肝阳、祛风通络的功效。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <div class="text-sm text-gray-500 mr-4">
+                                </div>
+                            </div>
+                            <a href="../更多药材信息/天麻.html" class="text-primary hover:text-dark text-sm font-medium">
+                                查看详情 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 样本6 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="relative h-64">
+                        <img src="../images/甘草.jpg" alt="甘草样本" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-2">甘草</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            甘草为豆科植物甘草、胀果甘草或光果甘草的干燥根和根茎，具有补脾益气等功效。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <div class="text-sm text-gray-500 mr-4">
+                                </div>
+                            </div>
+                            <a href="../更多药材信息/甘草.html" class="text-primary hover:text-dark text-sm font-medium">
+                                查看详情 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="../更多药材信息/更多中药材.html">查看更多中药材</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据统计 -->
+    <section id="samples" class="py-16 bg-light">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">
+                    数据<span class="text-primary">统计</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    依托先进的AI技术和庞大的数据库，我们为您提供精准可靠的中药材检测服务
+                </p>
+            </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- 统计卡片1 -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fa fa-leaf text-2xl text-primary"></i>
+                </div>
+                <div class="text-5xl font-bold text-primary mb-4 text-center counter" data-target="500">1000+</div>
+                <p class="text-gray-600 text-center font-medium">支持检测药材种类</p>
+            </div>
+            
+            <!-- 统计卡片2 -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fa fa-check-circle text-2xl text-primary"></i>
+                </div>
+                <div class="text-5xl font-bold text-primary mb-4 text-center counter" data-target="99">80%</div>
+                <p class="text-gray-600 text-center font-medium">平均检测准确率(%)</p>
+            </div>
+            
+            <!-- 统计卡片3 -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fa fa-database text-2xl text-primary"></i>
+                </div>
+                <div class="text-5xl font-bold text-primary mb-4 text-center counter" data-target="50000">10000+</div>
+                <p class="text-gray-600 text-center font-medium">药材样本数量</p>
+            </div>
+            
+            <!-- 统计卡片4 -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fa fa-bolt text-2xl text-primary"></i>
+                </div>
+                <div class="text-5xl font-bold text-primary mb-4 text-center counter" data-target="100000">5s</div>
+                <p class="text-gray-600 text-center font-medium">平均检测耗时</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-4">关于中药智检</h2>
+            <p class="mb-4">中药智检是致力于将先进的AI技术与传统中医药相结合，为中药材行业提供高效、准确、便捷的检测解决方案。</p>
+            <p class="mb-8">我们的团队由数据科学与大数据技术、中药学等领域的专家组成，拥有丰富的行业经验和技术积累。我们的使命是通过科技创新，推动中药材行业的规范化和现代化发展，保障中药材质量和安全，促进中医药事业的健康发展。</p>
+            <div class="about-features">
+                <div class="feature-item">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <h4>权威认证</h4>
+                        <p>通过多项专业机构认证，确保检测结果的权威性和可靠性</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <h4>专业团队</h4>
+                        <p>由行业专家与技术精英组成，提供专业的中药材检测服务</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-flask"></i>
+                    <div>
+                        <h4>研发实力</h4>
+                        <p>持续创新的技术研发能力，不断提升检测精度和效率</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-headset"></i>
+                    <div>
+                        <h4>优质服务</h4>
+                        <p>全方位的技术支持与服务，为您解决中药材检测难题</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- 返回顶部按钮 -->
+<button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+</body>
+</html>
+
+
+<!-- 页脚 -->
+<footer>
+    <div class="container mx-auto px-6">
+        <div class="footer-brand">
+            <a href="#" class="flex items-center space-x-3">
+                <img src="../images/logo.png" alt="中药智检 Logo" class="w-12 h-12">
+                <span class="text-2xl font-bold text-white">中药智检</span>
+            </a>
+            <p class="mt-4 text-gray-200">中药材智能检测专家，让中药材质量检测更简单、更准确、更高效。</p>
+        </div>
+        <div class="footer-links">
+            <h3 class="text-lg font-semibold">快速链接</h3>
+            <ul class="mt-4 link-grid">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#features">功能特点</a></li>
+                <li><a href="#process">检测流程</a></li>
+                <li><a href="#samples">样本展示</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2025 中药智检. 保留所有权利。</p>
+    </div>
+</footer>
+    <button id="backToTop" title="返回顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+<script src="主页.js"></script>
+</html>

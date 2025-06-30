@@ -1,0 +1,226 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* 头部样式 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.search-box {
+    display: flex;
+    width: 300px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.search-box input:focus {
+    border-color: #4CAF50;
+}
+
+.search-box button {
+    padding: 0 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #388E3C;
+}
+
+/* 导航栏样式 */
+.nav {
+    margin-bottom: 30px;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    background-color: #2E7D32;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.nav li {
+    flex: 1;
+    text-align: center;
+}
+
+.nav a {
+    display: block;
+    padding: 15px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.nav a:hover {
+    background-color: #1B5E20;
+}
+
+.nav li.active a {
+    background-color: #1B5E20;
+    font-weight: bold;
+}
+
+.nav i {
+    margin-right: 8px;
+}
+
+/* 主要内容区域 */
+.main-content {
+    margin-bottom: 60px;
+}
+
+.herb-gallery h2 {
+    font-size: 1.8rem;
+    color: #2E7D32;
+    margin-bottom: 35px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.herb-gallery h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #4CAF50;
+}
+
+/* A-Z分组样式 */
+.herb-group {
+    margin-bottom: 40px;
+}
+
+.herb-group h3 {
+    font-size: 1.5rem;
+    color: #2E7D32;
+    margin-bottom: 20px;
+    border-left: 4px solid #4CAF50;
+    padding-left: 10px;
+}
+
+.herb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.herb-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.herb-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.herb-image {
+    height: 160px;
+    overflow: hidden;
+}
+
+.herb-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.herb-card:hover .herb-image img {
+    transform: scale(1.05);
+}
+
+.herb-name {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #2E7D32;
+}
+
+/* 页脚样式 */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #2E7D32;
+    color: white;
+    margin-top: 50px;
+    border-radius: 4px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
+    .nav ul {
+        flex-direction: column;
+    }
+    
+    .herb-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+}

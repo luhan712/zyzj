@@ -1,0 +1,378 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const herbGroups = document.querySelector('.herb-groups');
+    const searchInput = document.querySelector('.search-box input');
+    const searchButton = document.querySelector('.search-box button');
+
+
+    // 使用更完整的中药材数据
+    const herbsData = [
+        { id: 1, name: "阿胶", image: "../中药材图片/阿胶.jpg" },
+        { id: 2, name: "阿魏", image: "../中药材图片/阿魏.jpg" },
+        { id: 3, name: "矮地茶", image: "../中药材图片/矮地茶.jpg" },
+        { id: 4, name: "艾叶", image: "../中药材图片/艾叶.jpg" },
+        { id: 5, name: "安息香", image: "../中药材图片/安息香.jpg" },
+        { id: 6, name: "桉叶油", image: "../中药材图片/桉叶油.jpg" },
+        { id: 7, name: "八角枫", image: "../中药材图片/八角枫.jpg" },
+        { id: 8, name: "八角茴香", image: "../中药材图片/八角茴香.jpg" },
+        { id: 9, name: "八角莲", image: "../中药材图片/八角莲.jpg" },
+        { id: 10, name: "八楞木", image: "../中药材图片/八楞木.jpg" },
+        { id: 11, name: "巴豆", image: "../中药材图片/巴豆.jpg" },
+        { id: 12, name: "巴戟天", image: "../中药材图片/巴戟天.jpg" },
+        { id: 13, name: "菝葜", image: "../中药材图片/菝葜.jpg" },
+        { id: 14, name: "白背叶根", image: "../中药材图片/白背叶根.jpg" },
+        { id: 15, name: "白扁豆", image: "../中药材图片/白扁豆.jpg" },
+        { id: 16, name: "白矾", image: "../中药材图片/白矾.jpg" },
+        { id: 17, name: "白附子", image: "../中药材图片/白附子.jpg" },
+        { id: 18, name: "白果", image: "../中药材图片/白果.jpg" },
+        { id: 19, name: "白鹤灵芝", image: "../中药材图片/白鹤灵芝.jpg" },
+        { id: 20, name: "白花丹", image: "../中药材图片/白花丹.jpg" },
+        { id: 21, name: "白花蛇舌草", image: "../中药材图片/白花蛇舌草.jpg" },
+        { id: 22, name: "白及", image: "../中药材图片/白及.jpg" },
+        { id: 23, name: "白芥子", image: "../中药材图片/白芥子.jpg" },
+        { id: 24, name: "白兰花", image: "../中药材图片/白兰花.jpg" },
+        { id: 25, name: "白蔹", image: "../中药材图片/白蔹.jpg" },
+        { id: 26, name: "白马骨", image: "../中药材图片/白马骨.jpg" },
+        { id: 27, name: "白茅根", image: "../中药材图片/白茅根.jpg" },
+        { id: 28, name: "白前", image: "../中药材图片/白前.jpg" },
+        { id: 29, name: "白屈菜", image: "../中药材图片/白屈菜.jpg" },
+        { id: 30, name: "白芍", image: "../中药材图片/白芍.jpg" },
+        { id: 31, name: "白石花", image: "../中药材图片/白石花.jpg" },
+        { id: 32, name: "白石英", image: "../中药材图片/白石英.jpg" },
+        { id: 33, name: "白首乌", image: "../中药材图片/白首乌.jpg" },
+        { id: 34, name: "白术", image: "../中药材图片/白术.jpg" },
+        { id: 35, name: "白薇", image: "../中药材图片/白薇.jpg" },
+        { id: 36, name: "白鲜皮", image: "../中药材图片/白鲜皮.jpg" },
+        { id: 37, name: "白药子", image: "../中药材图片/白药子.jpg" },
+        { id: 38, name: "白英", image: "../中药材图片/白英.jpg" },
+        { id: 39, name: "白芷", image: "../中药材图片/白芷.jpg" },
+        { id: 40, name: "百部", image: "../中药材图片/百部.jpg" },
+        { id: 41, name: "百合", image: "../中药材图片/百合.jpg" },
+        { id: 42, name: "柏子仁", image: "../中药材图片/柏子仁.jpg" },
+        { id: 43, name: "败酱草", image: "../中药材图片/败酱草.jpg" },
+        { id: 44, name: "板蓝根", image: "../中药材图片/板蓝根.jpg" },
+        { id: 45, name: "半边莲", image: "../中药材图片/半边莲.jpg" },
+        { id: 46, name: "半夏", image: "../中药材图片/半夏.jpg" },
+        { id: 47, name: "半枝莲", image: "../中药材图片/半枝莲.jpg" },
+        { id: 48, name: "薄荷", image: "../中药材图片/薄荷.jpg" },
+        { id: 49, name: "暴马丁香", image: "../中药材图片/暴马丁香.jpg" },
+        { id: 50, name: "北豆根", image: "../中药材图片/北豆根.jpg" },
+        { id: 51, name: "北刘寄奴", image: "../中药材图片/北刘寄奴.jpg" },
+        { id: 52, name: "北沙参", image: "../中药材图片/北沙参.jpg" },
+        { id: 53, name: "荜茇", image: "../中药材图片/荜茇.jpg" },
+        { id: 54, name: "荜澄茄", image: "../中药材图片/荜澄茄.jpg" },
+        { id: 55, name: "蓖麻子", image: "../中药材图片/蓖麻子.jpg" },
+        { id: 56, name: "扁蓄", image: "../中药材图片/扁蓄.jpg" },
+        { id: 57, name: "苍耳子", image: "../中药材图片/苍耳子.jpg" },
+        { id: 58, name: "苍术", image: "../中药材图片/苍术.jpg" },
+        { id: 59, name: "藏菖蒲", image: "../中药材图片/藏菖蒲.jpg" },
+        { id: 60, name: "草豆蔻", image: "../中药材图片/草豆蔻.jpg" },
+        { id: 61, name: "草果", image: "../中药材图片/草果.jpg" },
+        { id: 62, name: "草乌", image: "../中药材图片/草乌.jpg" },
+        { id: 63, name: "草乌叶", image: "../中药材图片/草乌叶.jpg" },
+        { id: 64, name: "侧柏叶", image: "../中药材图片/侧柏叶.jpg" },
+        { id: 65, name: "柴胡", image: "../中药材图片/柴胡.jpg" },
+        { id: 66, name: "蝉花", image: "../中药材图片/蝉花.jpg" },
+        { id: 67, name: "蝉蜕", image: "../中药材图片/蝉蜕.jpg" },
+        { id: 68, name: "蟾酥", image: "../中药材图片/蟾酥.jpg" },
+        { id: 69, name: "常山", image: "../中药材图片/常山.jpg" },
+        { id: 70, name: "车前草", image: "../中药材图片/车前草.jpg" },
+        { id: 71, name: "车前子", image: "../中药材图片/车前子.jpg" },
+        { id: 72, name: "沉香", image: "../中药材图片/沉香.jpg" },
+        { id: 73, name: "陈皮", image: "../中药材图片/陈皮.jpg" },
+        { id: 74, name: "澄茄子", image: "../中药材图片/澄茄子.jpg" },
+        { id: 75, name: "赤芍", image: "../中药材图片/赤芍.jpg" },
+        { id: 76, name: "赤石脂", image: "../中药材图片/赤石脂.jpg" },
+        { id: 77, name: "赤小豆", image: "../中药材图片/赤小豆.jpg" },
+        { id: 78, name: "茺蔚子", image: "../中药材图片/茺蔚子.jpg" },
+        { id: 79, name: "虫白蜡", image: "../中药材图片/虫白蜡.jpg" },
+        { id: 80, name: "虫牙药", image: "../中药材图片/虫牙药.jpg" },
+        { id: 81, name: "臭灵丹草", image: "../中药材图片/臭灵丹草.jpg" },
+        { id: 82, name: "臭牡丹", image: "../中药材图片/臭牡丹.jpg" },
+        { id: 83, name: "臭梧桐", image: "../中药材图片/臭梧桐.jpg" },
+        { id: 84, name: "楮实子", image: "../中药材图片/楮实子.jpg" },
+        { id: 85, name: "川贝母", image: "../中药材图片/川贝母.jpg" },
+        { id: 86, name: "川楝子", image: "../中药材图片/川楝子.jpg" },
+        { id: 87, name: "川木通", image: "../中药材图片/川木通.jpg" },
+        { id: 88, name: "川木香", image: "../中药材图片/川木香.jpg" },
+        { id: 89, name: "川牛膝", image: "../中药材图片/川牛膝.jpg" },
+        { id: 90, name: "川射干", image: "../中药材图片/川射干.jpg" },
+        { id: 91, name: "川乌", image: "../中药材图片/川乌.jpg" },
+        { id: 92, name: "川芎", image: "../中药材图片/川芎.jpg" },
+        { id: 93, name: "川续断", image: "../中药材图片/川续断.jpg" },
+        { id: 94, name: "穿破石", image: "../中药材图片/穿破石.jpg" },
+        { id: 95, name: "穿山甲", image: "../中药材图片/穿山甲.jpg" },
+        { id: 96, name: "穿山龙", image: "../中药材图片/穿山龙.jpg" },
+        { id: 97, name: "穿心莲", image: "../中药材图片/穿心莲.jpg" },
+        { id: 98, name: "垂盆草", image: "../中药材图片/垂盆草.jpg" },
+        { id: 99, name: "椿皮", image: "../中药材图片/椿皮.jpg" },
+        { id: 100, name: "磁石", image: "../中药材图片/磁石.jpg" },
+        { id: 101, name: "刺猬皮", image: "../中药材图片/刺猬皮.jpg" },
+        { id: 102, name: "刺五加", image: "../中药材图片/刺五加.jpg" },
+        { id: 103, name: "刺苋菜", image: "../中药材图片/刺苋菜.jpg" },
+        { id: 104, name: "葱白", image: "../中药材图片/葱白.jpg" },
+        { id: 105, name: "葱子", image: "../中药材图片/葱子.jpg" },
+        { id: 106, name: "楤木", image: "../中药材图片/楤木.jpg" },
+        { id: 107, name: "翠云草", image: "../中药材图片/翠云草.jpg" },
+        { id: 108, name: "大驳骨", image: "../中药材图片/大驳骨.jpg" },
+        { id: 109, name: "大豆黄卷", image: "../中药材图片/大豆黄卷.jpg" },
+        { id: 110, name: "大飞扬草", image: "../中药材图片/大飞扬草.jpg" },
+        { id: 111, name: "大风艾", image: "../中药材图片/大风艾.jpg" },
+        { id: 112, name: "大风子", image: "../中药材图片/大风子.jpg" },
+        { id: 113, name: "大腹皮", image: "../中药材图片/大腹皮.jpg" },
+        { id: 114, name: "大黄", image: "../中药材图片/大黄.jpg" },
+        { id: 115, name: "大戟", image: "../中药材图片/大戟.jpg" },
+        { id: 116, name: "大蓟", image: "../中药材图片/大蓟.jpg" },
+        { id: 117, name: "大青盐", image: "../中药材图片/大青盐.jpg" },
+        { id: 118, name: "大青叶", image: "../中药材图片/大青叶.jpg" },
+        { id: 119, name: "大蒜", image: "../中药材图片/大蒜.jpg" },
+        { id: 120, name: "大血藤", image: "../中药材图片/大血藤.jpg" },
+        { id: 121, name: "大叶桉叶", image: "../中药材图片/大叶桉叶.jpg" },
+        { id: 122, name: "大叶紫珠", image: "../中药材图片/大叶紫珠.jpg" },
+        { id: 123, name: "大枣", image: "../中药材图片/大枣.jpg" },
+        { id: 124, name: "玳瑁", image: "../中药材图片/玳瑁.jpg" },
+        { id: 125, name: "丹参", image: "../中药材图片/丹参.jpg" },
+        { id: 126, name: "单叶蔓荆子", image: "../中药材图片/单叶蔓荆子.jpg" },
+        { id: 127, name: "胆矾", image: "../中药材图片/胆矾.jpg" },
+        { id: 128, name: "胆木", image: "../中药材图片/胆木.jpg" },
+        { id: 129, name: "胆南星", image: "../中药材图片/胆南星.jpg" },
+        { id: 130, name: "淡豆豉", image: "../中药材图片/淡豆豉.jpg" },
+        { id: 131, name: "淡竹叶", image: "../中药材图片/淡竹叶.jpg" },
+        { id: 132, name: "当归", image: "../中药材图片/当归.jpg" },
+        { id: 133, name: "当药", image: "../中药材图片/当药.jpg" },
+        { id: 134, name: "党参", image: "../中药材图片/党参.jpg" },
+        { id: 135, name: "刀豆", image: "../中药材图片/刀豆.jpg" },
+        { id: 136, name: "倒扣草", image: "../中药材图片/倒扣草.jpg" },
+        { id: 137, name: "稻芽", image: "../中药材图片/稻芽.jpg" },
+        { id: 138, name: "地不容", image: "../中药材图片/地不容.jpg" },
+        { id: 139, name: "地耳草", image: "../中药材图片/地耳草.jpg" },
+        { id: 140, name: "地枫皮", image: "../中药材图片/地枫皮.jpg" },
+        { id: 141, name: "地肤子", image: "../中药材图片/地肤子.jpg" },
+        { id: 142, name: "地骨皮", image: "../中药材图片/地骨皮.jpg" },
+        { id: 143, name: "地黄", image: "../中药材图片/地黄.jpg" },
+        { id: 144, name: "地锦草", image: "../中药材图片/地锦草.jpg" },
+        { id: 145, name: "地龙", image: "../中药材图片/地龙.jpg" },
+        { id: 146, name: "地稔根", image: "../中药材图片/地稔根.jpg" },
+        { id: 147, name: "地桃花", image: "../中药材图片/地桃花.jpg" },
+        { id: 148, name: "地榆", image: "../中药材图片/地榆.jpg" },
+        { id: 149, name: "灯心草", image: "../中药材图片/灯心草.jpg" },
+        { id: 150, name: "灯盏细辛", image: "../中药材图片/灯盏细辛.jpg" },
+        { id: 151, name: "颠茄草", image: "../中药材图片/颠茄草.jpg" },
+        { id: 152, name: "丁公藤", image: "../中药材图片/丁公藤.jpg" },
+        { id: 153, name: "丁香", image: "../中药材图片/丁香.jpg" },
+        { id: 154, name: "丁香罗勒油", image: "../中药材图片/丁香罗勒油.jpg" },
+        { id: 155, name: "东风橘", image: "../中药材图片/东风橘.jpg" },
+        { id: 156, name: "冬虫夏草", image: "../中药材图片/冬虫夏草.jpg" },
+        { id: 157, name: "冬瓜皮", image: "../中药材图片/冬瓜皮.jpg" },
+        { id: 158, name: "冬葵果", image: "../中药材图片/冬葵果.jpg" },
+        { id: 159, name: "冬葵子", image: "../中药材图片/冬葵子.jpg" },
+        { id: 160, name: "冬凌草", image: "../中药材图片/冬凌草.jpg" },
+        { id: 161, name: "豆豉姜", image: "../中药材图片/豆豉姜.jpg" },
+        { id: 162, name: "豆蔻", image: "../中药材图片/豆蔻.jpg" },
+        { id: 163, name: "独活", image: "../中药材图片/独活.jpg" },
+        { id: 164, name: "独脚金", image: "../中药材图片/独脚金.jpg" },
+        { id: 165, name: "独一味", image: "../中药材图片/独一味.jpg" },
+        { id: 166, name: "杜仲", image: "../中药材图片/杜仲.jpg" },
+        { id: 167, name: "杜仲叶", image: "../中药材图片/杜仲叶.jpg" },
+        { id: 168, name: "断血流", image: "../中药材图片/断血流.jpg" },
+        { id: 169, name: "莪术", image: "../中药材图片/莪术.jpg" },
+        { id: 170, name: "峨参", image: "../中药材图片/峨参.jpg" },
+        { id: 171, name: "鹅不食草", image: "../中药材图片/鹅不食草.jpg" },
+        { id: 172, name: "儿茶", image: "../中药材图片/儿茶.jpg" },
+        { id: 173, name: "番石榴叶", image: "../中药材图片/番石榴叶.jpg" },
+        { id: 174, name: "番泻叶", image: "../中药材图片/番泻叶.jpg" },
+        { id: 175, name: "翻白草", image: "../中药材图片/翻白草.jpg" },
+        { id: 176, name: "方解石", image: "../中药材图片/方解石.jpg" },
+        { id: 177, name: "防风", image: "../中药材图片/防风.jpg" },
+        { id: 178, name: "防风草", image: "../中药材图片/防风草.jpg" },
+        { id: 179, name: "防己", image: "../中药材图片/防己.jpg" },
+        { id: 180, name: "飞龙掌血", image: "../中药材图片/飞龙掌血.jpg" },
+        { id: 181, name: "飞天蠄蟧", image: "../中药材图片/飞天蠄蟧.jpg" },
+        { id: 182, name: "榧子", image: "../中药材图片/榧子.jpg" },
+        { id: 183, name: "粉萆薢", image: "../中药材图片/粉萆薢.jpg" },
+        { id: 184, name: "粉葛", image: "../中药材图片/粉葛.jpg" },
+        { id: 185, name: "枫香脂", image: "../中药材图片/枫香脂.jpg" },
+        { id: 186, name: "蜂房", image: "../中药材图片/蜂房.jpg" },
+        { id: 187, name: "凤凰衣", image: "../中药材图片/凤凰衣.jpg" },
+        { id: 188, name: "凤尾草", image: "../中药材图片/凤尾草.jpg" },
+        { id: 189, name: "凤眼草", image: "../中药材图片/凤眼草.jpg" },
+        { id: 190, name: "凤眼果", image: "../中药材图片/凤眼果.jpg" },
+        { id: 191, name: "伏龙肝", image: "../中药材图片/伏龙肝.jpg" },
+        { id: 192, name: "扶芳藤", image: "../中药材图片/扶芳藤.jpg" },
+        { id: 193, name: "扶桑花", image: "../中药材图片/扶桑花.jpg" },
+        { id: 194, name: "佛甲草", image: "../中药材图片/佛甲草.jpg" },
+        { id: 195, name: "佛手", image: "../中药材图片/佛手.jpg" },
+        { id: 196, name: "茯苓", image: "../中药材图片/茯苓.jpg" },
+        { id: 197, name: "茯神", image: "../中药材图片/茯神.jpg" },
+        { id: 198, name: "浮萍", image: "../中药材图片/浮萍.jpg" },
+        { id: 199, name: "浮小麦", image: "../中药材图片/浮小麦.jpg" },
+        { id: 200, name: "附子", image: "../中药材图片/附子.jpg" },
+        { id: 201, name: "覆盆子", image: "../中药材图片/覆盆子.jpg" },
+        { id: 202, name: "甘草", image: "../中药材图片/甘草.jpg" },
+        { id: 203, name: "甘松", image: "../中药材图片/甘松.jpg" },
+        { id: 204, name: "甘肃丹参", image: "../中药材图片/甘肃丹参.jpg" },
+        { id: 205, name: "甘遂", image: "../中药材图片/甘遂.jpg" },
+        { id: 206, name: "干姜", image: "../中药材图片/干姜.jpg" },
+        { id: 207, name: "干漆", image: "../中药材图片/干漆.jpg" },
+        { id: 208, name: "岗梅根", image: "../中药材图片/岗梅根.jpg" },
+        { id: 209, name: "岗稔根", image: "../中药材图片/岗稔根.jpg" },
+        { id: 210, name: "杠板归", image: "../中药材图片/杠板归.jpg" },
+        { id: 211, name: "高良姜", image: "../中药材图片/高良姜.jpg" },
+        { id: 212, name: "藁本", image: "../中药材图片/藁本.jpg" },
+        { id: 213, name: "葛根", image: "../中药材图片/葛根.jpg" },
+        { id: 214, name: "功劳木", image: "../中药材图片/功劳木.jpg" },
+        { id: 215, name: "钩藤", image: "../中药材图片/钩藤.jpg" },
+        { id: 216, name: "狗肝菜", image: "../中药材图片/狗肝菜.jpg" },
+        { id: 217, name: "狗脊", image: "../中药材图片/狗脊.jpg" },
+        { id: 218, name: "狗肾", image: "../中药材图片/狗肾.jpg" },
+        { id: 219, name: "枸骨叶", image: "../中药材图片/枸骨叶.jpg" },
+        { id: 220, name: "枸杞子", image: "../中药材图片/枸杞子.jpg" },
+        { id: 221, name: "谷精草", image: "../中药材图片/谷精草.jpg" },
+        { id: 222, name: "谷芽", image: "../中药材图片/谷芽.jpg" },
+        { id: 223, name: "骨碎补", image: "../中药材图片/骨碎补.jpg" },
+        { id: 224, name: "瓜蒌", image: "../中药材图片/瓜蒌.jpg" },
+        { id: 225, name: "瓜子金", image: "../中药材图片/瓜子金.jpg" },
+        { id: 226, name: "关黄柏", image: "../中药材图片/关黄柏.jpg" },
+        { id: 227, name: "贯叶金丝桃", image: "../中药材图片/贯叶金丝桃.jpg" },
+        { id: 228, name: "贯众", image: "../中药材图片/贯众.jpg" },
+        { id: 229, name: "广东海桐皮", image: "../中药材图片/广东海桐皮.jpg" },
+        { id: 230, name: "广东合欢花", image: "../中药材图片/广东合欢花.jpg" },
+        { id: 231, name: "广东刘寄奴", image: "../中药材图片/广东刘寄奴.jpg" },
+        { id: 232, name: "广东络石藤", image: "../中药材图片/广东络石藤.jpg" },
+        { id: 233, name: "广东王不留行", image: "../中药材图片/广东王不留行.jpg" },
+        { id: 234, name: "广藿香", image: "../中药材图片/广藿香.jpg" },
+        { id: 235, name: "广金钱草", image: "../中药材图片/广金钱草.jpg" },
+        { id: 236, name: "广昆布", image: "../中药材图片/广昆布.jpg" },
+        { id: 237, name: "广山药", image: "../中药材图片/广山药.jpg" },
+        { id: 238, name: "广升麻", image: "../中药材图片/广升麻.jpg" },
+        { id: 239, name: "广枣", image: "../中药材图片/广枣.jpg" },
+        { id: 240, name: "龟甲", image: "../中药材图片/龟甲.jpg" },
+        { id: 241, name: "鬼箭羽", image: "../中药材图片/鬼箭羽.jpg" },
+        { id: 242, name: "鬼针草", image: "../中药材图片/鬼针草.jpg" },
+        { id: 243, name: "桂花", image: "../中药材图片/桂花.jpg" },
+        { id: 244, name: "桂皮", image: "../中药材图片/桂皮.jpg" },
+        { id: 245, name: "桂枝", image: "../中药材图片/桂枝.jpg" },
+        { id: 246, name: "蛤蚧", image: "../中药材图片/蛤蚧.jpg" },
+        { id: 247, name: "海参", image: "../中药材图片/海参.jpg" },
+        { id: 248, name: "海风藤", image: "../中药材图片/海风藤.jpg" }
+    ];
+
+    // 获取拼音首字母
+    function getPinyinInitial(name) {
+        const firstChar = name[0];
+        const pinyinMap = {
+            '阿':'A', '矮':'A', '艾':'A', '安':'A', '桉':'A', '八':'B', '巴':'B', '白':'B', '菝':'B', '百':'B',
+            '柏':'B', '败':'B', '板':'B', '半':'B', '薄':'B', '暴':'B', '北':'B', '荜':'B', '蓖':'B', '扁':'B',
+            '苍':'C', '藏':'C', '草':'C', '侧':'C', '柴':'C', '蝉':'C', '蟾':'C', '常':'C', '车':'C', '沉':'C',
+            '陈':'C', '澄':'C', '赤':'C', '茺':'C', '虫':'C', '臭':'C', '楮':'C', '川':'C', '穿':'C', '垂':'C',
+            '椿':'C', '磁':'C', '刺':'C', '葱':'C', '楤':'C', '翠':'C', '大':'D', '玳':'D', '丹':'D', '单':'D',
+            '胆':'D', '淡':'D', '当':'D', '党':'D', '刀':'D', '倒':'D', '稻':'D', '地':'D', '灯':'D', '颠':'D',
+            '丁':'D', '冬':'D', '豆':'D', '独':'D', '杜':'D', '断':'D', '莪':'E', '峨':'E', '鹅':'E', '儿':'E',
+            '番':'F', '翻':'F', '方':'F', '防':'F', '飞':'F', '榧':'F', '粉':'F', '枫':'F', '蜂':'F', '凤':'F',
+            '伏':'F', '扶':'F', '佛':'F', '茯':'F', '浮':'F', '附':'F', '覆':'F', '甘':'G', '干':'G', '岗':'G',
+            '杠':'G', '高':'G', '藁':'G', '葛':'G', '功':'G', '钩':'G', '狗':'G', '枸':'G', '谷':'G', '骨':'G',
+            '瓜':'G', '关':'G', '贯':'G', '广':'G', '龟':'G', '鬼':'G', '桂':'G', '蛤':'G', '海':'H', '合':'H',
+            '红':'H', '厚':'H', '胡':'H', '虎':'H', '花':'H', '滑':'H', '化':'H', '槐':'H', '黄':'H', '火':'H',
+            '藿':'H', '鸡':'J', '积':'J', '急':'J', '蒺':'J', '姜':'J', '僵':'J', '降':'J', '绞':'J', '接':'J',
+            '节':'J', '金':'J', '锦':'J', '荆':'J', '九':'J', '韭':'J', '菊':'J', '橘':'J', '卷':'J', '决':'J',
+            '爵':'J', '苦':'K', '款':'K', '昆':'K', '阔':'K', '辣':'L', '莱':'L', '老':'L', '雷':'L', '类':'L',
+            '梨':'L', '藜':'L', '荔':'L', '连':'L', '莲':'L', '两':'L', '蓼':'L', '了':'L', '灵':'L', '刘':'L',
+            '龙':'L', '芦':'L', '陆':'L', '鹿':'L', '路':'L', '绿':'L', '罗':'L', '络':'L', '麻':'M', '马':'M',
+            '麦':'M', '满':'M', '蔓':'M', '芒':'M', '猫':'M', '毛':'M', '茅':'M', '没':'M', '玫':'M', '梅':'M',
+            '虻':'M', '密':'M', '明':'M', '墨':'M', '牡':'M', '木':'M', '南':'N', '闹':'N', '泥':'N', '牛':'N',
+            '女':'N', '糯':'N', '藕':'O', '胖':'P', '炮':'P', '佩':'P', '枇':'P', '片':'P', '平':'P', '蒲':'P',
+            '七':'Q', '蕲':'Q', '奇':'Q', '芡':'Q', '茜':'Q', '羌':'Q', '秦':'Q', '青':'Q', '苘':'Q', '秋':'Q',
+            '瞿':'Q', '全':'Q', '拳':'Q', '人':'R', '忍':'R', '肉':'R', '乳':'R', '三':'S', '桑':'S', '沙':'S',
+            '山':'S', '商':'S', '芍':'S', '少':'S', '蛇':'S', '射':'S', '伸':'S', '升':'S', '生':'S', '石':'S',
+            '使':'S', '柿':'S', '首':'S', '熟':'S', '水':'S', '丝':'S', '四':'S', '松':'S', '苏':'S', '酸':'S',
+            '锁':'S', '太':'T', '檀':'T', '桃':'T', '天':'T', '铁':'T', '葶':'T', '通':'T', '土':'T', '瓦':'W',
+            '王':'W', '威':'W', '乌':'W', '无':'W', '五':'W', '西':'X', '稀':'X', '细':'X', '夏':'X', '仙':'X',
+            '香':'X', '小':'X', '薤':'X', '辛':'X', '雄':'X', '续':'X', '玄':'X', '雪':'X', '血':'X', '寻':'X',
+            '鸦':'Y', '鸭':'Y', '延':'Y', '盐':'Y', '羊':'Y', '阳':'Y', '野':'Y', '叶':'Y', '一':'Y', '益':'Y',
+            '阴':'Y', '银':'Y', '淫':'Y', '罂':'Y', '余':'Y', '鱼':'Y', '玉':'Y', '郁':'Y', '月':'Y', '云':'Y',
+            '泽':'Z', '皂':'Z', '泽':'Z', '樟':'Z', '浙':'Z', '珍':'Z', '知':'Z', '栀':'Z', '枳':'Z', '朱':'Z',
+            '珠':'Z', '猪':'Z', '竹':'Z', '苎':'Z', '紫':'Z', '棕':'Z'
+        };
+        return pinyinMap[firstChar] || '其他';
+    }
+
+    // 渲染药材分组
+    function renderHerbs(filteredHerbs = herbsData) {
+        herbGroups.innerHTML = '';
+        const groupedHerbs = {};
+
+        // 按首字母分组
+        filteredHerbs.forEach(herb => {
+            const initial = getPinyinInitial(herb.name);
+            if (!groupedHerbs[initial]) {
+                groupedHerbs[initial] = [];
+            }
+            groupedHerbs[initial].push(herb);
+        });
+
+        // 渲染每个分组
+        Object.keys(groupedHerbs).sort().forEach(initial => {
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'herb-group';
+            
+            const heading = document.createElement('h3');
+            heading.textContent = initial;
+            groupDiv.appendChild(heading);
+
+            const gridDiv = document.createElement('div');
+            gridDiv.className = 'herb-grid';
+
+ groupedHerbs[initial].forEach(herb => {
+    const herbCard = document.createElement('a');
+        herbCard.className = 'herb-card';
+        herbCard.href = `${herb.name}.html`; // 链接到独立页面
+        herbCard.title = `查看${herb.name}的详细信息`;
+                
+                const herbImage = document.createElement('div');
+                herbImage.className = 'herb-image';
+                
+                const img = document.createElement('img');
+                img.src = herb.image;
+                img.alt = herb.name;
+                img.loading = 'lazy';
+                
+                herbImage.appendChild(img);
+                
+                const herbName = document.createElement('div');
+                herbName.className = 'herb-name';
+                herbName.textContent = herb.name;
+                
+                herbCard.appendChild(herbImage);
+                herbCard.appendChild(herbName);
+                
+                gridDiv.appendChild(herbCard);
+            });
+
+            groupDiv.appendChild(gridDiv);
+            herbGroups.appendChild(groupDiv);
+        });
+    }
+
+    // 搜索功能
+    function performSearch() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        if (searchTerm) {
+            const filteredHerbs = herbsData.filter(herb => 
+                herb.name.toLowerCase().includes(searchTerm)
+            );
+            renderHerbs(filteredHerbs);
+        } else {
+            renderHerbs();
+        }
+    }
+
+    // 事件监听
+    searchButton.addEventListener('click', performSearch);
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+
+    // 初始化渲染
+    renderHerbs();
+});
