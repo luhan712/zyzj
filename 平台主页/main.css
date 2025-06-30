@@ -277,11 +277,10 @@ body {
     padding: 100px 0;
     background: white;
     color: black;
-    width: 1536px; 
-    height: 951.94px; 
+    width: auto; /* 修改为自动宽度，适应小屏幕 */
+    height: auto; /* 修改为自动高度，适应小屏幕 */
     margin: 0 auto;
 }
-
 
 #detect h2 {
     font-weight: bold; 
@@ -359,7 +358,6 @@ body {
     color: var(--dark-green); 
 }
 
-
 #detect .card-hover {
     padding: 1.5rem; 
 }
@@ -377,9 +375,6 @@ body {
     margin-top: 1rem;
 }
 
-#qr-reader {
-    margin-top: 1rem;
-}
 /* 样本展示样式 */
 #samples {
     padding: 80px 0;
@@ -627,6 +622,11 @@ footer .copyright {
 
     footer .footer-links a:hover {
         transform: none;
+    }
+
+    /* 调整检测区域卡片在小屏幕下的显示 */
+    #detect .grid {
+        grid-template-columns: 1fr;
     }
 }
 
